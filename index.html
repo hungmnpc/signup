@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <form action="" method="post" class="form" id="form-1">
+            <h3 class="heading">Sign up with your email</h3>
+            <p class="already">Already have an account? <a href="#" class="text-blue">Sign in</a></p>
+
+            <div class="space"></div>
+
+            <div class="form-group">
+                <input type="text" name="firstname" id="firstname" placeholder=" " class="form-control">
+                <label for="firstname" class="form-label">First name</label>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="lastname" id="lastname" placeholder=" " class="form-control">
+                <label for="lastname" class="form-label">Last name</label>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="email" id="email" placeholder=" " class="form-control">
+                <label for="email" class="form-label">Email address</label>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" placeholder=" " 
+                id="password" class="form-control">
+                <label for="password" class="form-label">Password</label>
+                <i class="fas fa-eye fa-eye-slash toggle-visible"></i>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group checkbox">
+                    <input type="checkbox" name="rules-check" id="checkbox" class="rules-checkbox">
+                    <label for="rules-check" class="rules-text">I agree to the <a href="#" class="text-blue">
+                        Terms of Service
+                    </a> and <a href="#" class="text-blue">Privacy Policy</a></label>
+                    <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="form-btn" value="Create account">
+                </input>
+            </div>
+        </form>
+
+    </div>
+</body>
+<script src="./main.js"></script>
+<script src="./validator.js"></script>
+<script>
+    Validator({
+        form: '#form-1',
+        errorSelector: '.form-message',
+        formGroupSelector: '.form-group',
+        rules: [
+            Validator.isRequired('#firstname'),
+            Validator.isRequired('#lastname'),
+            Validator.isRequired('#email'),
+            Validator.isEmail('#email'),
+            Validator.isRequired('#password'),
+            Validator.minLength('#password', 8),
+            Validator.isRequired('#checkbox', 'Bạn phải đồng ý với điều khoản này'),
+        ],
+        onSubmit: function(data) {
+            console.log(data);
+        }
+    })
+</script>
+</html>
